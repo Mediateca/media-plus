@@ -1,0 +1,41 @@
+<div class="clr-row" *ngIf="cuenta">
+    <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-8 clr-col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                {{ui.template.section.profile.titulo[idioma]}}
+            </div>
+            <div class="card-block">
+                <div class="card-media-block">
+                    <img [src]="cuenta.profile_picture_url" class="card-media-image">
+                    <div class="card-media-description">
+                        <span class="card-media-title">
+                            <strong>{{ui.template.section.profile.usuario[idioma]}}: {{cuenta.username}}</strong>
+                        </span>
+                        <span class="card-media-text">
+                            {{ui.template.section.profile.seguidores[idioma]}}: {{cuenta.followers_count}}
+                        </span>
+                        <span class="card-media-text">
+                            {{ui.template.section.profile.seguidos[idioma]}}: {{cuenta.follows_count}}
+                        </span>
+                    </div>
+                </div>
+                <div class="card-text">
+                    <form class="perfil" clrForm>
+                        <clr-input-container>
+                            <label>{{ui.template.section.profile.nombre[idioma]}}</label>
+                            <input clrInput type="text" [(ngModel)]="cuenta.name" name="name">
+                        </clr-input-container>
+                        <clr-input-container>
+                            <label>{{ui.template.section.profile.web[idioma]}}</label>
+                            <input clrInput type="text" [(ngModel)]="cuenta.website" name="website">
+                        </clr-input-container>
+                    </form>
+                </div>
+            </div>
+            <div class="card-footer btn-group">
+                <button class="btn btn-primary">{{ui.acciones.aceptar[idioma]}}</button>
+                <button class="btn btn-danger">{{ui.acciones.cancelar[idioma]}}</button>
+            </div>
+        </div>
+    </div>
+</div>

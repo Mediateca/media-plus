@@ -1,0 +1,17 @@
+header {
+    .branding {
+        img {
+            max-width: 2rem;
+            height: auto;
+        }
+        .title {
+            margin-left: 1rem;
+        }
+    }
+    .header-actions {
+        align-items: center;
+        .fb-login-button {
+            margin-right: 1rem;
+        }
+    }
+}

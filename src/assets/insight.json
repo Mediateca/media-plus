@@ -1,0 +1,38 @@
+{
+    "data": [
+        {
+            "name": "follower_count",
+            "period": "day",
+            "values": [
+                {
+                    "value": 32,
+                    "end_time": "2018-01-11T08:00:00+0000"
+                },
+                {
+                    "value": 32,
+                    "end_time": "2018-01-12T08:00:00+0000"
+                }
+            ],
+            "title": "Follower count",
+            "description": "Total number of new followers each day within the specified range.",
+            "id": "instagram_business_account_id/insights/follower_count/day"
+        },
+        {
+            "name": "profile_views",
+            "period": "day",
+            "values": [
+                {
+                    "value": 15,
+                    "end_time": "2018-01-11T08:00:00+0000"
+                },
+                {
+                    "value": 15,
+                    "end_time": "2018-01-12T08:00:00+0000"
+                }
+            ],
+            "title": "Profile Views",
+            "description": "Total number of unique accounts that have viewed this profile within the specified period",
+            "id": "instagram_business_account_id/insights/profile_views/day"
+        }
+    ]
+}

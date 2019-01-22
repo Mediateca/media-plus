@@ -1,0 +1,20 @@
+<header class="header-3">
+    <div class="branding">
+        <div class="nav-link">
+            <img [src]="ui.template.header.brand.rutaLogo">
+            <span class="title">
+                {{ui.template.header.brand.nombre}}
+            </span>
+        </div>
+    </div>
+    <div class="header-nav" *ngIf="loggedIn">
+        <a href="javascript://" class="active nav-link nav-text">Panel de control</a>
+        <a href="javascript://" class="nav-link nav-text">Estadísticas</a>
+    </div>
+    <!-- Un selector de idioma -->
+    <div class="header-actions">
+        <sesion-login-fb [ui]="ui"
+                         [idioma]="idioma">
+        </sesion-login-fb>
+    </div>
+</header>

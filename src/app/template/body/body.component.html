@@ -1,0 +1,30 @@
+<div class="no-login" *ngIf="!loggedIn">
+    <img [src]="ui.template.body.noLogin">
+</div>
+<div class="content-container" *ngIf="loggedIn">
+    <div class="content-area" *ngIf="cuentas">
+        <app-profile [cuenta]="cuentas[cuentaActual].data"
+                     [ui]="ui"
+                     [idioma]="idioma"
+                     *ngIf="seccionActual == 0">
+        </app-profile>
+        <app-estadisticas [cuenta]="cuentas[cuentaActual].data"
+                         [ui]="ui"
+                         [idioma]="idioma"
+                         *ngIf="seccionActual == 1">
+        </app-estadisticas>
+        <div *ngIf="seccionActual == 2">Operaciones</div>
+    </div>
+    <nav class="sidenav">
+        <section class="sidenav-content">
+            <app-sidenav *ngFor="let cuenta of cuentas; index as i; first as inicial"
+                         [cuenta]="cuenta.data"
+                         [activo]="cuenta.activo"
+                         [num]="i"
+                         [ui]="ui"
+                         [idioma]="idioma"
+                         (seccion)="cambioSeccion($event)">
+            </app-sidenav>
+        </section>
+    </nav>
+</div>

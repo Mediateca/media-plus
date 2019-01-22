@@ -1,0 +1,72 @@
+{
+    "acciones": {
+        "aceptar": {
+            "es": "Aceptar",
+            "en": "Ok"
+        },
+        "cancelar": {
+            "es": "Cancelar",
+            "en": "Cancel"
+        }
+    },
+    "template": {
+        "header": {
+            "brand": {
+                "nombre": "MediaPlus",
+                "rutaLogo": "assets/MediatecaPlus.png"
+            }
+        },
+        "body": {
+            "noLogin": "assets/InicieSesion.png"
+        },
+        "section": {
+            "profile": {
+                "titulo": {
+                    "es": "Datos de perfil",
+                    "en": "Profile"
+                },
+                "usuario": {
+                    "es": "Nombre de usuario",
+                    "en": "Username"
+                },
+                "seguidores": {
+                    "es": "Seguidores",
+                    "en": "Followers"
+                },
+                "seguidos": {
+                    "es": "Seguidos",
+                    "en": "Following"
+                },
+                "nombre": {
+                    "es": "Nombre",
+                    "en": "Name"
+                },
+                "web": {
+                    "es": "Sitio web",
+                    "en": "Website"
+                }
+            }
+        },
+        "sidenav": {
+
+        }
+    },
+    "sesion": {
+        "loginFB": {
+            "login": {
+                "icono": "logoFB",
+                "texto": {
+                    "es": "Ingresar a Facebook",
+                    "en": "Log in Facebook"
+                }
+            },
+            "logout": {
+                "icono": "logout",
+                "texto": {
+                    "es": "Salir de Facebook",
+                    "en": "Log out"
+                }
+            }
+        }
+    }
+}

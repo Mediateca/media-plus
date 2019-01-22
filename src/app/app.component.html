@@ -1,1 +1,10 @@
-<sesion-login></sesion-login>
+<div class="main-container" *ngIf="interfaz">
+    <app-header [ui]="interfaz"
+                [idioma]="idioma"
+                (cambioIdioma)="cambioIdioma($event)">
+    </app-header>
+    <app-body [ui]="interfaz"
+              [idioma]="idioma">
+    </app-body>
+</div>
+<span class="spinner" *ngIf="!interfaz">Cargando...</span>

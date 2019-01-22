@@ -1,0 +1,103 @@
+{
+    "data": [
+        {
+            "name": "impressions",
+            "period": "day",
+            "values": [
+                {
+                    "value": 32,
+                    "end_time": "2019-01-11T08:00:00+0000"
+                },
+                {
+                    "value": 28,
+                    "end_time": "2019-01-12T08:00:00+0000"
+                },
+                {
+                    "value": 36,
+                    "end_time": "2019-01-13T08:00:00+0000"
+                },
+                {
+                    "value": 48,
+                    "end_time": "2019-01-14T08:00:00+0000"
+                },
+                {
+                    "value": 52,
+                    "end_time": "2019-01-15T08:00:00+0000"
+                },
+                {
+                    "value": 61,
+                    "end_time": "2019-01-16T08:00:00+0000"
+                }
+            ],
+            "title": "Impressions",
+            "description": "Total number of times this profile has been seen",
+            "id": "instagram_business_account_id/insights/impressions/day"
+        },
+        {
+            "name": "reach",
+            "period": "day",
+            "values": [
+                {
+                    "value": 12,
+                    "end_time": "2019-01-11T08:00:00+0000"
+                },
+                {
+                    "value": 12,
+                    "end_time": "2019-01-12T08:00:00+0000"
+                },
+                {
+                    "value": 16,
+                    "end_time": "2019-01-13T08:00:00+0000"
+                },
+                {
+                    "value": 18,
+                    "end_time": "2019-01-14T08:00:00+0000"
+                },
+                {
+                    "value": 22,
+                    "end_time": "2019-01-15T08:00:00+0000"
+                },
+                {
+                    "value": 21,
+                    "end_time": "2019-01-16T08:00:00+0000"
+                }
+            ],
+            "title": "Reach",
+            "description": "Total number of unique accounts that have seen this profile",
+            "id": "instagram_business_account_id/insights/reach/day"
+        },
+        {
+            "name": "profile_views",
+            "period": "day",
+            "values": [
+                {
+                    "value": 15,
+                    "end_time": "2019-01-11T08:00:00+0000"
+                },
+                {
+                    "value": 15,
+                    "end_time": "2019-01-12T08:00:00+0000"
+                },
+                {
+                    "value": 6,
+                    "end_time": "2019-01-13T08:00:00+0000"
+                },
+                {
+                    "value": 18,
+                    "end_time": "2019-01-14T08:00:00+0000"
+                },
+                {
+                    "value": 12,
+                    "end_time": "2019-01-15T08:00:00+0000"
+                },
+                {
+                    "value": 11,
+                    "end_time": "2019-01-16T08:00:00+0000"
+                }
+            ],
+            "title": "Profile Views",
+            "description": "Total number of unique accounts that have viewed this profile within the specified period",
+            "id": "instagram_business_account_id/insights/profile_views/day"
+        }
+    ]
+}

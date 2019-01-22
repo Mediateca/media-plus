@@ -1,0 +1,12 @@
+{
+    "accounts": [
+        {
+            "nombre": "Mediateca",
+            "id": "user_mediateca.json"
+        },
+        {
+            "nombre": "La Otra Orilla",
+            "id": "user_orilla.json"
+        }
+    ]
+}
