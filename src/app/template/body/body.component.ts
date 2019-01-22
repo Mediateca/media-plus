@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthService, SocialUser } from 'angular-6-social-login';
+import { AuthService, SocialUser } from 'angularx-social-login';
 import { GetIgService } from '../../ig_api/get-ig.service';
 
 @Component({

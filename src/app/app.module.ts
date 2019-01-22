@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from "angular-6-social-login";
+import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from "angularx-social-login";
 import { AppComponent } from './app.component';
-import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
+import { ClarityModule/*, ClrFormsModule*/ } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartsModule } from 'ng2-charts';
@@ -15,11 +15,13 @@ import { SidenavComponent } from './template/sidenav/sidenav.component';
 import { ProfileComponent } from './template/section/profile/profile.component';
 import { EstadisticasComponent } from './template/section/estadisticas/estadisticas.component';
 
-export function getAuthServiceConfigs() {
-    let config = new AuthServiceConfig([{
+let config = new AuthServiceConfig([
+    {
         id: FacebookLoginProvider.PROVIDER_ID,
-        provider: new FacebookLoginProvider('364189737487924')
-    }]);
+        provider: new FacebookLoginProvider("364189737487924")
+    }
+]);
+export function provideConfig() {
     return config;
 }
     @NgModule({
@@ -37,7 +39,7 @@ export function getAuthServiceConfigs() {
             FormsModule,
             SocialLoginModule,
             ClarityModule,
-            ClrFormsNextModule,
+            //ClrFormsModule,
             BrowserAnimationsModule,
             FontAwesomeModule,
             HttpClientModule,
@@ -45,7 +47,7 @@ export function getAuthServiceConfigs() {
         ],
         providers: [{
             provide: AuthServiceConfig,
-            useFactory: getAuthServiceConfigs
+            useFactory: provideConfig
         }],
         bootstrap: [AppComponent]
     })

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
-import { AuthService, FacebookLoginProvider, SocialUser } from 'angular-6-social-login';
+import { AuthService, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
 
 @Component({
     selector: 'sesion-login-fb',
