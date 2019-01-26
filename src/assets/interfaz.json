@@ -45,10 +45,99 @@
                     "es": "Sitio web",
                     "en": "Website"
                 }
+            },
+            "estadisticas": {
+                "tabs": {
+                    "generales": {
+                        "es": "Generales",
+                        "en": "Overview"
+                    },
+                    "posts": {
+                        "es": "Publicaciones",
+                        "en": "Posts"
+                    },
+                    "hashtags": {
+                        "es": "Hashtags",
+                        "en": "Hashtags"
+                    }
+                },
+                "generales": {
+                    "seguidores": {
+                        "cardHeader": {
+                            "es": "Linea de tiempo de Seguidores",
+                            "en": "Followers timeline"
+                        },
+                        "grafico": {
+                            "serieA": {
+                                "es": "Seguidores",
+                                "en": "Followers"
+                            }
+                        }
+                    },
+                    "impresiones": {
+                        "cardHeader": {
+                            "es": "Linea de tiempo de Impresiones",
+                            "en": "Impressions timeline"
+                        },
+                        "grafico": {
+                            "serieA": {
+                                "es": "Impresiones",
+                                "en": "Impressions"
+                            }
+                        }
+                    },
+                    "alcance": {
+                        "cardHeader": {
+                            "es": "Linea de tiempo de Alcance",
+                            "en": "Reaches timeline"
+                        },
+                        "grafico": {
+                            "serieA": {
+                                "es": "Alcance",
+                                "en": "Reaches"
+                            }
+                        }
+                    },
+                    "likes": {
+                        "cardHeader": {
+                            "es": "Linea de tiempo de Likes",
+                            "en": "Likes timeline"
+                        },
+                        "grafico": {
+                            "serieA": {
+                                "es": "Likes",
+                                "en": "Likes"
+                            }
+                        }
+                    }
+                },
+                "publicaciones": {
+                    "post": {
+                        "likes": {
+                            "es": "Likes",
+                            "en": "Likes"
+                        },
+                        "comentarios": {
+                            "es": "Comentarios",
+                            "en": "Comments"
+                        }
+                    }
+                }
             }
         },
         "sidenav": {
-
+            "perfil": {
+                "es": "Perfil",
+                "en": "Profile"
+            },
+            "estadisticas": {
+                "es": "Estadísticas",
+                "en": "Analytics"
+            },
+            "operaciones": {
+                "es": "Operaciones",
+                "en": "Actions"
+            }
         }
     },
     "sesion": {

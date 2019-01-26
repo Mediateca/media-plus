@@ -5,8 +5,20 @@
         {{cuenta.name}}
     </label>
     <ul class="nav-list">
-        <li><a class="nav-link" [ngClass]="{'active':activo&&numSeccion==0}" (click)="abreSection(0)">Perfil</a></li>
-        <li><a class="nav-link" [ngClass]="{'active':activo&&numSeccion==1}" (click)="abreSection(1)">Estadisticas</a></li>
-        <li><a class="nav-link" [ngClass]="{'active':activo&&numSeccion==2}" (click)="abreSection(2)">Operaciones</a></li>
+        <li>
+            <a class="nav-link" [ngClass]="{'active':activo&&numSeccion==0}" (click)="abreSection(0)">
+                {{ui.template.sidenav.perfil[idioma]}}
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" [ngClass]="{'active':activo&&numSeccion==1}" (click)="abreSection(1)">
+                {{ui.template.sidenav.estadisticas[idioma]}}
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" [ngClass]="{'active':activo&&numSeccion==2}" (click)="abreSection(2)">
+                {{ui.template.sidenav.operaciones[idioma]}}
+            </a>
+        </li>
     </ul>
 </section>

@@ -14,6 +14,8 @@ import { BodyComponent } from './template/body/body.component';
 import { SidenavComponent } from './template/sidenav/sidenav.component';
 import { ProfileComponent } from './template/section/profile/profile.component';
 import { EstadisticasComponent } from './template/section/estadisticas/estadisticas.component';
+import { GeneralesComponent } from './template/section/estadisticas/generales/generales.component';
+import { PublicacionesComponent } from './template/section/estadisticas/publicaciones/publicaciones.component';
 
 let config = new AuthServiceConfig([
     {
@@ -32,7 +34,9 @@ export function provideConfig() {
             BodyComponent,
             SidenavComponent,
             ProfileComponent,
-            EstadisticasComponent
+            EstadisticasComponent,
+            GeneralesComponent,
+            PublicacionesComponent
         ],
         imports: [
             BrowserModule,

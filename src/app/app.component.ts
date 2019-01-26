@@ -8,7 +8,7 @@ import { InterfazService } from './generales/interfaz.service';
 })
 export class AppComponent {
     interfaz:any;
-    idioma:string = 'es';
+    idioma:string = 'en';
     constructor(private UI: InterfazService) {
         this.UI.getUI().subscribe((data)=>{
             this.interfaz = data;

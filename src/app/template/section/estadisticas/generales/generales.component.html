@@ -1,0 +1,44 @@
+<div class="clr-row">
+    <div class="clr-col-lg-6 clr-col-12">
+        <div class="card" *ngIf="seguidores">
+            <div class="card-header">
+                {{ui.template.section.estadisticas.generales.seguidores.cardHeader[idioma]}}
+            </div>
+            <div class="card-block">
+                <div class="card-text">
+                    <div style="display: block">
+                        <canvas baseChart
+                                [datasets]="seguidores.data"
+                                [labels]="seguidores.labels"
+                                [colors]="seguidores.colors"
+                                [options]="chartOptions"
+                                [legend]="seguidores.leyenda"
+                                [chartType]="seguidores.tipo">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clr-col-lg-6 clr-col-12">
+        <div class="card" *ngIf="impresiones">
+            <div class="card-header">
+                {{ui.template.section.estadisticas.generales.impresiones.cardHeader[idioma]}}
+            </div>
+            <div class="card-block">
+                <div class="card-text">
+                    <div style="display: block">
+                        <canvas baseChart
+                                [datasets]="impresiones.data"
+                                [labels]="impresiones.labels"
+                                [colors]="impresiones.colors"
+                                [options]="chartOptions"
+                                [legend]="impresiones.leyenda"
+                                [chartType]="impresiones.tipo">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

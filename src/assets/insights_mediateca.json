@@ -1,6 +1,39 @@
 {
     "data": [
         {
+            "name": "follower_count",
+            "period": "day",
+            "values": [
+                {
+                    "value": 3,
+                    "end_time": "2019-01-11T08:00:00+0000"
+                },
+                {
+                    "value": 2,
+                    "end_time": "2019-01-12T08:00:00+0000"
+                },
+                {
+                    "value": 5,
+                    "end_time": "2019-01-13T08:00:00+0000"
+                },
+                {
+                    "value": 1,
+                    "end_time": "2019-01-14T08:00:00+0000"
+                },
+                {
+                    "value": 2,
+                    "end_time": "2019-01-15T08:00:00+0000"
+                },
+                {
+                    "value": 6,
+                    "end_time": "2019-01-16T08:00:00+0000"
+                }
+            ],
+            "title": "Followers",
+            "description": "Total number of new followers each day within the specified range.",
+            "id": "instagram_business_account_id/insights/follower_count/day"
+        },
+        {
             "name": "impressions",
             "period": "day",
             "values": [
@@ -98,6 +131,39 @@
             "title": "Profile Views",
             "description": "Total number of unique accounts that have viewed this profile within the specified period",
             "id": "instagram_business_account_id/insights/profile_views/day"
+        },
+        {
+            "name": "website_clicks",
+            "period": "day",
+            "values": [
+                {
+                    "value": 1,
+                    "end_time": "2019-01-11T08:00:00+0000"
+                },
+                {
+                    "value": 0,
+                    "end_time": "2019-01-12T08:00:00+0000"
+                },
+                {
+                    "value": 2,
+                    "end_time": "2019-01-13T08:00:00+0000"
+                },
+                {
+                    "value": 1,
+                    "end_time": "2019-01-14T08:00:00+0000"
+                },
+                {
+                    "value": 0,
+                    "end_time": "2019-01-15T08:00:00+0000"
+                },
+                {
+                    "value": 1,
+                    "end_time": "2019-01-16T08:00:00+0000"
+                }
+            ],
+            "title": "Profile Views",
+            "description": "Total number of taps on the website link in the Business User's profile.",
+            "id": "instagram_business_account_id/insights/website_clicks/day"
         }
     ]
 }
