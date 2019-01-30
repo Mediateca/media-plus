@@ -62,51 +62,93 @@
                     }
                 },
                 "generales": {
-                    "seguidores": {
+                    "dropdown": [
+                        {
+                            "texto": {
+                                "es": "Última semana",
+                                "en": "Last week"
+                            },
+                            "rango": [0, -7]
+                        },
+                        {
+                            "texto": {
+                                "es": "Últimas dos semanas",
+                                "en": "Last two weeks"
+                            },
+                            "rango": [0, -14]
+                        },
+                        {
+                            "texto": {
+                                "es": "Último mes",
+                                "en": "Last month"
+                            },
+                            "rango": [0, -29]
+                        },
+                        {
+                            "texto": {
+                                "es": "Rango personalizado",
+                                "en": "Custom range"
+                            },
+                            "rango": [0, -2]
+                        }
+                    ],
+                    "follower_count": {
                         "cardHeader": {
-                            "es": "Linea de tiempo de Seguidores",
-                            "en": "Followers timeline"
+                            "es": "Seguidores",
+                            "en": "Followers"
                         },
                         "grafico": {
-                            "serieA": {
+                            "serie": {
                                 "es": "Seguidores",
                                 "en": "Followers"
                             }
                         }
                     },
-                    "impresiones": {
+                    "impressions": {
                         "cardHeader": {
-                            "es": "Linea de tiempo de Impresiones",
-                            "en": "Impressions timeline"
+                            "es": "Impresiones",
+                            "en": "Impressions"
                         },
                         "grafico": {
-                            "serieA": {
+                            "serie": {
                                 "es": "Impresiones",
                                 "en": "Impressions"
                             }
                         }
                     },
-                    "alcance": {
+                    "reach": {
                         "cardHeader": {
-                            "es": "Linea de tiempo de Alcance",
-                            "en": "Reaches timeline"
+                            "es": "Alcance",
+                            "en": "Reach"
                         },
                         "grafico": {
-                            "serieA": {
+                            "serie": {
                                 "es": "Alcance",
-                                "en": "Reaches"
+                                "en": "Reach"
                             }
                         }
                     },
-                    "likes": {
+                    "profile_views": {
                         "cardHeader": {
-                            "es": "Linea de tiempo de Likes",
-                            "en": "Likes timeline"
+                            "es": "Visitas al perfil",
+                            "en": "Profile views"
                         },
                         "grafico": {
-                            "serieA": {
-                                "es": "Likes",
-                                "en": "Likes"
+                            "serie": {
+                                "es": "Visitas al perfil",
+                                "en": "Profile views"
+                            }
+                        }
+                    },
+                    "website_clicks": {
+                        "cardHeader": {
+                            "es": "Clics en el vínculo al sitio web",
+                            "en": "Website clicks"
+                        },
+                        "grafico": {
+                            "serie": {
+                                "es": "Clics en website",
+                                "en": "Website clicks"
                             }
                         }
                     }

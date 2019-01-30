@@ -1,40 +1,38 @@
 <div class="clr-row">
-    <div class="clr-col-lg-6 clr-col-12">
-        <div class="card" *ngIf="seguidores">
+    <div class="clr-col-lg-6 clr-col-12" *ngFor="let metrica of metricas; index as i; first as inicial">
+        <div class="card" *ngIf="dataChart[metrica]">
             <div class="card-header">
-                {{ui.template.section.estadisticas.generales.seguidores.cardHeader[idioma]}}
+                <div class="clr-row">
+                    <div class="clr-col">
+                        {{ui.template.section.estadisticas.generales[metrica].cardHeader[idioma]}}
+                    </div><!-- /.clr-col -->
+                    <div class="clr-col-4">
+                        <clr-dropdown>
+                            <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
+                                {{textoDropdown[metrica]}}
+                                <clr-icon shape="caret down"></clr-icon>
+                            </button>
+                            <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+                                <button type="button" clrDropdownItem
+                                        (click)="obtieneDatos([metrica],boton.rango,boton.texto[idioma])"
+                                        *ngFor="let boton of ui.template.section.estadisticas.generales.dropdown">
+                                    {{boton.texto[idioma]}}
+                                </button>
+                            </clr-dropdown-menu>
+                        </clr-dropdown>
+                    </div><!-- /.clr-col-4 -->
+                </div><!-- /.clr-row -->
             </div>
             <div class="card-block">
                 <div class="card-text">
                     <div style="display: block">
                         <canvas baseChart
-                                [datasets]="seguidores.data"
-                                [labels]="seguidores.labels"
-                                [colors]="seguidores.colors"
+                                [datasets]="dataChart[metrica].data"
+                                [labels]="dataChart[metrica].labels"
+                                [colors]="dataChart[metrica].colors"
                                 [options]="chartOptions"
-                                [legend]="seguidores.leyenda"
-                                [chartType]="seguidores.tipo">
-                        </canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="clr-col-lg-6 clr-col-12">
-        <div class="card" *ngIf="impresiones">
-            <div class="card-header">
-                {{ui.template.section.estadisticas.generales.impresiones.cardHeader[idioma]}}
-            </div>
-            <div class="card-block">
-                <div class="card-text">
-                    <div style="display: block">
-                        <canvas baseChart
-                                [datasets]="impresiones.data"
-                                [labels]="impresiones.labels"
-                                [colors]="impresiones.colors"
-                                [options]="chartOptions"
-                                [legend]="impresiones.leyenda"
-                                [chartType]="impresiones.tipo">
+                                [legend]="dataChart[metrica].leyenda"
+                                [chartType]="dataChart[metrica].tipo">
                         </canvas>
                     </div>
                 </div>

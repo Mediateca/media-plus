@@ -2,23 +2,23 @@
     <img [src]="ui.template.body.noLogin">
 </div>
 <div class="content-container" *ngIf="loggedIn">
-    <div class="content-area" *ngIf="cuentas">
-        <app-profile [cuenta]="cuentas[cuentaActual].data"
+    <div class="content-area" *ngIf="cuentas[cuentaActual]">
+        <app-profile [cuenta]="cuentas[cuentaActual].info"
                      [ui]="ui"
                      [idioma]="idioma"
                      *ngIf="seccionActual == 0">
         </app-profile>
-        <app-estadisticas [cuenta]="cuentas[cuentaActual].data"
-                         [ui]="ui"
-                         [idioma]="idioma"
-                         *ngIf="seccionActual == 1">
+        <app-estadisticas [cuenta]="cuentas[cuentaActual].info"
+                          [ui]="ui"
+                          [idioma]="idioma"
+                          *ngIf="seccionActual == 1">
         </app-estadisticas>
-        <div *ngIf="seccionActual == 2">Operaciones</div>
+        <div *ngIf="seccionActual == 2">Hashtags</div>
     </div>
     <nav class="sidenav">
         <section class="sidenav-content">
             <app-sidenav *ngFor="let cuenta of cuentas; index as i; first as inicial"
-                         [cuenta]="cuenta.data"
+                         [cuenta]="cuenta.info"
                          [activo]="cuenta.activo"
                          [num]="i"
                          [ui]="ui"

@@ -12,25 +12,32 @@ export class BodyComponent implements OnInit {
     @Input() ui:any;
     user:SocialUser;
     loggedIn:boolean;
-    cuentas:Array<any>;
+    cuentas:Array<any> = [];
     cuentaActual:number = 0;
     seccionActual:number = 0;
-    constructor( private socialAuthService: AuthService,
+    constructor(private socialAuthService: AuthService,
                  private getIg: GetIgService) {}
     ngOnInit() {
         this.socialAuthService.authState.subscribe((user) => {
             this.user = user;
             this.loggedIn = (user != null);
             if (this.loggedIn) {
-                this.getIg.getData('accounts','').subscribe((data)=>{
-                    this.cuentas = data.accounts;
-                    this.cuentas.forEach((val,i)=>{
-                        this.getIg.getData('user',val.id).subscribe((datos)=>{
-                            this.cuentas[i].data = datos;
-                            if(i == this.cuentaActual) {
-                                this.cuentas[i].activo = true;
-                            } else {
-                                this.cuentas[i].activo = false;
+                this.getIg.getData('accounts',this.user.id,this.user.authToken).subscribe(data=>{
+                    var cont:number = 0;
+                    data.data.forEach((val,i)=>{
+                        this.getIg.getData('user',val.id,val.access_token).subscribe(datos=>{
+                            if (datos.instagram_business_account) {
+                                this.getIg.getData('ig_user', datos.instagram_business_account.id, datos.access_token).subscribe(info=>{
+                                    this.cuentas[cont] = datos;
+                                    this.cuentas[cont].info = info;
+                                    this.cuentas[cont].info.access_token = datos.access_token;
+                                    if(cont == this.cuentaActual) {
+                                        this.cuentas[cont].activo = true;
+                                    } else {
+                                        this.cuentas[cont].activo = false;
+                                    }
+                                    cont++;
+                                });
                             }
                         });
                     });
