@@ -6,7 +6,7 @@
                     <div class="clr-col">
                         {{ui.template.section.estadisticas.generales[metrica].cardHeader[idioma]}}
                     </div><!-- /.clr-col -->
-                    <div class="clr-col-4">
+                    <div class="clr-col">
                         <clr-dropdown>
                             <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
                                 {{textoDropdown[metrica]}}
@@ -20,12 +20,12 @@
                                 </button>
                             </clr-dropdown-menu>
                         </clr-dropdown>
-                    </div><!-- /.clr-col-4 -->
+                    </div><!-- /.clr-col -->
                 </div><!-- /.clr-row -->
             </div>
             <div class="card-block">
                 <div class="card-text">
-                    <div style="display: block">
+                    <div style="display: block" *ngIf="dataOK[metrica]">
                         <canvas baseChart
                                 [datasets]="dataChart[metrica].data"
                                 [labels]="dataChart[metrica].labels"

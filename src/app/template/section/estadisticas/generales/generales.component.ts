@@ -16,18 +16,21 @@ export class GeneralesComponent {
             this.metricas.forEach(metrica=>{
                 this.textoDropdown[metrica] = this.ui.template.section.estadisticas.generales.dropdown[0].texto[this.idioma];
                 this.obtieneDatos([metrica],[0,-7],this.textoDropdown[metrica]);
+                this.dataOK[metrica] = false;
             });
         }
     }
-    id:number;
+    dataOK:any = {};
+    id:string;
     access_token:string;
-    chartOptions:any = {scaleShowVerticalLines: false, responsive: true};
     metricas = ['impressions','reach','follower_count','profile_views','website_clicks'];
+    chartOptions:any = {scaleShowVerticalLines: false, responsive: true};
     dataChart:any = {};
     textoDropdown:any = {};
     constructor(private getIg: GetIgService) {}
     obtieneDatos(metrica:Array<string>, rango:Array<number> = [0,-7],nombreRango:string='') {
-        this.getIg.getData('user_insights',String(this.id),this.access_token,rango,metrica).subscribe(datos=>{
+        this.dataOK[metrica[0]] = false;
+        this.getIg.getData('user_insights',this.id,this.access_token,rango,metrica).subscribe(datos=>{
             var salida:any = {'data':[],'labels':[],'tipo':'line','leyenda':true};
             for (let pack of datos.data) {
                 var data:Array<number> = [];
@@ -45,11 +48,12 @@ export class GeneralesComponent {
             if (metrica.length > 1) {
                 this.dataChart.combinado = salida;
                 this.textoDropdown.combinado = nombreRango;
+                this.dataOK.combinado = true;
             } else {
                 this.dataChart[metrica[0]] = salida;
                 this.textoDropdown[metrica[0]] = nombreRango;
+                this.dataOK[metrica[0]] = true;
             }
-            console.log(metrica[0],this.dataChart[metrica[0]]);
         });
     }
 }

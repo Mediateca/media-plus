@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from "angularx-social-login";
 import { AppComponent } from './app.component';
-import { ClarityModule/*, ClrFormsModule*/ } from '@clr/angular';
+import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartsModule } from 'ng2-charts';
@@ -43,7 +43,6 @@ export function provideConfig() {
             FormsModule,
             SocialLoginModule,
             ClarityModule,
-            //ClrFormsModule,
             BrowserAnimationsModule,
             FontAwesomeModule,
             HttpClientModule,

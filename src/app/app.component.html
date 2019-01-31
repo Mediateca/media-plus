@@ -1,4 +1,4 @@
-<div class="main-container" *ngIf="interfaz">
+<clr-main-container *ngIf="interfaz">
     <app-header [ui]="interfaz"
                 [idioma]="idioma"
                 (cambioIdioma)="cambioIdioma($event)">
@@ -6,5 +6,5 @@
     <app-body [ui]="interfaz"
               [idioma]="idioma">
     </app-body>
-</div>
+</clr-main-container>
 <span class="spinner" *ngIf="!interfaz">Cargando...</span>

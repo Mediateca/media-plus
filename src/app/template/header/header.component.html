@@ -1,4 +1,4 @@
-<header class="header-3">
+<clr-header class="header-3">
     <div class="branding">
         <div class="nav-link">
             <img [src]="ui.template.header.brand.rutaLogo">
@@ -7,14 +7,12 @@
             </span>
         </div>
     </div>
-    <div class="header-nav" *ngIf="loggedIn">
+    <div class="header-nav" *ngIf="loggedIn" [clr-nav-level]="2">
+        <!-- Un selector de idioma -->
         <a href="javascript://" class="active nav-link nav-text">Panel de control</a>
         <a href="javascript://" class="nav-link nav-text">Estadísticas</a>
     </div>
     <div class="header-actions">
-        <!-- Un selector de idioma -->
-        <sesion-login-fb [ui]="ui"
-                         [idioma]="idioma">
-        </sesion-login-fb>
+        <sesion-login-fb [ui]="ui"[idioma]="idioma"></sesion-login-fb>
     </div>
-</header>
+</clr-header>

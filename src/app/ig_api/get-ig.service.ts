@@ -11,16 +11,18 @@ export class GetIgService {
     getData(tipo:string,id:string,token:string='',rango:Array<number>=[0,0],metricas:Array<string>=['']):any {
         switch (tipo) {
             case 'media_insights':
-                return this.http.get('./assets/'+id+'.json');
+                return this.http.get('https://graph.facebook.com/'+id+'/insights?metric='+metricas.join()+'&access_token='+token);
+                break;
+            case 'media_data':
+                return this.http.get('https://graph.facebook.com/'+id+'?fields='+metricas.join()+'&access_token='+token);
                 break;
             case 'media':
-                return this.http.get('./assets/media_mediateca.json');
+                return this.http.get('https://graph.facebook.com/'+id+'/media?access_token='+token);
                 break;
             case 'user_insights':
                 var until = this.hoy + (rango[0] * this.dia);
                 var since = (rango[1] * this.dia)<2592000?(until + (rango[1] * this.dia)):until - 2592000;
                 return this.http.get('https://graph.facebook.com/'+id+'/insights?metric='+metricas.join()+'&access_token='+token+'&period=day&since='+since+'&until='+until);
-                //return this.http.get('https://graph.facebook.com/'+id+'/insights?metric=email_contacts,follower_count,impressions,profile_views,reach,website_clicks&access_token='+token+'&period=day&since='+since+'&until='+until);
                 break;
             case 'accounts':
                 return this.http.get('https://graph.facebook.com/'+id+'/accounts?access_token='+token);

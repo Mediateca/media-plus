@@ -15,7 +15,7 @@
         </app-estadisticas>
         <div *ngIf="seccionActual == 2">Hashtags</div>
     </div>
-    <nav class="sidenav">
+    <nav class="sidenav" [clr-nav-level]="1">
         <section class="sidenav-content">
             <app-sidenav *ngFor="let cuenta of cuentas; index as i; first as inicial"
                          [cuenta]="cuenta.info"

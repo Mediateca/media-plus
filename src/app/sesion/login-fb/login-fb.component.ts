@@ -7,14 +7,20 @@ import { AuthService, FacebookLoginProvider, SocialUser } from 'angularx-social-
     template: `
         <button type="button" class="btn btn-icon btn-primary" *ngIf="!loggedIn" (click)="login()">
             <fa-icon [icon]="logoFB" size="lg"></fa-icon>
-            {{ui.sesion.loginFB.login.texto[idioma]}}
+            <span class="texto">{{ui.sesion.loginFB.login.texto[idioma]}}</span>
         </button>
         <button type="button" class="btn btn-icon btn-danger" *ngIf="loggedIn" (click)="logout()">
             <clr-icon shape="logout"></clr-icon>
-            {{ui.sesion.loginFB.logout.texto[idioma]}}
+            <span class="texto">{{ui.sesion.loginFB.logout.texto[idioma]}}</span>
         </button>
     `,
-    styles: []
+    styles: [`
+                @media (max-width: 768px) {
+                    .texto {
+                        display: none;
+                    }
+                }
+            `]
 })
 export class LoginFBComponent implements OnInit {
     @Input() idioma:string;

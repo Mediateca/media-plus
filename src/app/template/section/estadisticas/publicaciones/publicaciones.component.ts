@@ -7,23 +7,42 @@ import { GetIgService } from '../../../../ig_api/get-ig.service';
     styleUrls: ['./publicaciones.component.scss']
 })
 export class PublicacionesComponent {
-    @Input() cuenta:any;
     @Input() idioma:string;
     @Input() ui:any;
+    @Input() set cuenta(cuenta:any) {
+        if (cuenta) {
+            this.id = cuenta.id;
+            this.access_token = cuenta.access_token;
+            this.obtieneDatos();
+        }
+    }
+    id:string;
+    access_token:string;
+    metricas = ['like_count','comments_count','media_url','timestamp','media_type'];
+    //metricas = ['timestamp'];
     medias:Array<any> = [];
-    constructor(private getIg: GetIgService) {
-        this.getIg.getData('media','').subscribe(datos=>{
+    constructor(private getIg: GetIgService) {};
+    obtieneDatos(){
+        this.getIg.getData('media',this.id,this.access_token).subscribe(datos=>{
+            var cont:number = 0;
+            var todosMedias:Array<any> = [];
             for (let media of datos.data) {
-                this.getIg.getData('media_insights',media.id).subscribe(datos=>{
-                    this.medias.push({
-                        'id': datos.id,
-                        'like_count': datos.like_count,
-                        'comments_count': datos.comments_count,
-                        'media_url': datos.media_url,
-                        'timestamp': datos.timestamp
-                    });
+                this.getIg.getData('media_data',media.id,this.access_token,[],this.metricas).subscribe(data=>{
+                    todosMedias.push(data);
+                    cont++;
+                    if (cont == datos.data.length) {
+                        this.medias = todosMedias.sort((a,b) => {
+                            if (a.timestamp > b.timestamp) {
+                                return -1;
+                            }
+                            if (a.timestamp < b.timestamp) {
+                                return 1;
+                            }
+                            return 0;
+                        });
+                    }
                 });
             }
         });
-    }
+    };
 }
