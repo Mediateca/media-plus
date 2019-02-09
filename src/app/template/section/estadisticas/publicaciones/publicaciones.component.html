@@ -1,18 +1,116 @@
+<div class="clr-row">
+    <div class="clr-col-12 clr-col-lg-6">
+        <table class="table table-vertical">
+            <tbody>
+                <tr>
+                    <th>{{ui.template.section.estadisticas.publicaciones.filtros.titulo[idioma]}}</th>
+                    <td>
+                        <clr-dropdown>
+                            <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
+                                {{ui.template.section.estadisticas.publicaciones.filtros.variables[filtroOrden][idioma]}}
+                                <clr-icon shape="caret down"></clr-icon>
+                            </button>
+                            <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
+                                <button type="button"
+                                        clrDropdownItem
+                                        *ngFor="let filtro of ui.template.section.estadisticas.publicaciones.filtros.variables; index as i; first as inicial"
+                                        (click)="cambiaFiltro(i)">
+                                    {{filtro[idioma]}}
+                                </button>
+                            </clr-dropdown-menu>
+                        </clr-dropdown>
+                    </td>
+                </tr>
+                <tr>
+                    <th>{{ui.template.section.estadisticas.publicaciones.orden.titulo[idioma]}}</th>
+                    <td>
+                        <clr-dropdown>
+                            <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
+                                {{ui.template.section.estadisticas.publicaciones.orden[sentidoTipo[sentidoActual]][idioma]}}
+                                <clr-icon shape="caret down"></clr-icon>
+                            </button>
+                            <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
+                                <button type="button"
+                                        clrDropdownItem
+                                        *ngFor="let sentido of sentidoTipo; index as i; first as inicial"
+                                        (click)="cambiaSentido(i)">
+                                    {{ui.template.section.estadisticas.publicaciones.orden[sentidoTipo[i]][idioma]}}
+                                </button>
+                            </clr-dropdown-menu>
+                        </clr-dropdown>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div><!-- /.clr-col-12 -->
+    <div class="clr-col-12 clr-col-lg-6">
+        <table class="table table-vertical">
+            <tbody>
+                <tr>
+                    <th>{{ui.template.section.estadisticas.publicaciones.cantidad.encabezado[idioma]}}</th>
+                    <td>
+                        <clr-dropdown>
+                            <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
+                                {{ui.template.section.estadisticas.publicaciones.cantidad.inicial[idioma]}}
+                                {{limiteMedias}}
+                                {{ui.template.section.estadisticas.publicaciones.cantidad.final[idioma]}}
+                                <clr-icon shape="caret down"></clr-icon>
+                            </button>
+                            <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
+                                <button type="button"
+                                        clrDropdownItem
+                                        *ngFor="let numPost of [25,50,75,100,200,500]"
+                                        (click)="obtieneDatos(numPost)">
+                                    {{ui.template.section.estadisticas.publicaciones.cantidad.inicial[idioma]}}
+                                    {{numPost}}
+                                    {{ui.template.section.estadisticas.publicaciones.cantidad.final[idioma]}}
+                                </button>
+                            </clr-dropdown-menu>
+                        </clr-dropdown>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div><!-- /.clr-col-12 -->
+</div><!-- /.clr-row -->
 <div class="clr-row" *ngIf="medias">
-    <div class="clr-col-lg-4 clr-col-md-6 clr-col-12" *ngFor="let media of medias; index as i; first as inicial">
-        <div class="card">
-            <div class="card-header">
-                {{media.timestamp}}
+    <div class="clr-col-4 post-container" *ngFor="let media of medias; index as i">
+        <a class="card clickable card-img post-card" (mouseover)="infoVisible[i]=true" (mouseout)="infoVisible[i]=false" (click)="modalInfo=true">
+            <div class="post-img"
+                 [ngStyle]="{'background-image': 'url('+media.media_url+')'}"
+                 *ngIf="media.media_type!='VIDEO'">
             </div>
-            <div class="card-img">
-                <img [src]="media.media_url">
+            <div class="post-img"
+                 [ngStyle]="{'background-image': 'url('+media.thumbnail_url+')'}"
+                 *ngIf="media.media_type=='VIDEO'">
             </div>
-            <div class="card-block">
-                <div class="card-text">
-                    <p>{{ui.template.section.estadisticas.publicaciones.post.likes[idioma]}}: {{media.like_count}}</p>
-                    <p>{{ui.template.section.estadisticas.publicaciones.post.comentarios[idioma]}}: {{media.comments_count}}</p>
+            <div class="post-over" [@inVisible]="infoVisible[i] ? 'visible' : 'invisible'">
+                <div class="linea-sup">
+                    <span class="like_count">
+                        <clr-icon shape="heart" class="is-solid"></clr-icon>
+                        {{media.like_count}}
+                    </span>
+                    <span class="comments_count">
+                        <clr-icon shape="talk-bubbles" class="is-solid"></clr-icon>
+                        {{media.comments_count}}
+                    </span>
                 </div>
-            </div>
-        </div>
+                <div class="line-inf">
+                    <span class="timestamp">
+                        <clr-icon shape="calendar" class="is-solid"></clr-icon>
+                        {{media.timestamp | date:'dd-MM-yyyy':'-0500'}}
+                    </span>
+                </div>
+            </div><!-- /.post-over -->
+        </a><!-- /.card -->
+    </div><!-- /.clr-col... -->
+</div><!-- /.clr-row -->
+<clr-modal [(clrModalOpen)]="modalInfo">
+    <h3 class="modal-title">I have a nice title</h3>
+    <div class="modal-body">
+        <p>But not much to say...</p>
     </div>
-</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modalInfo=false">Cerrar</button>
+    </div>
+</clr-modal>

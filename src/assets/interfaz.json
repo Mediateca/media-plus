@@ -62,6 +62,16 @@
                     }
                 },
                 "generales": {
+                    "like_count":                     {
+                        "inicial": {
+                            "es": "Últimas",
+                            "en": "Last"
+                        },
+                        "final": {
+                            "es": "publicaciones",
+                            "en": "posts"
+                        }
+                    },
                     "dropdown": [
                         {
                             "texto": {
@@ -92,6 +102,22 @@
                             "rango": [0, -2]
                         }
                     ],
+                    "promedio": {
+                        "es": "Promedio",
+                        "en": "Average"
+                    },
+                    "post_likes": {
+                        "cardHeader": {
+                            "es": "Likes por publicación",
+                            "en": "Post likes"
+                        },
+                        "grafico": {
+                            "serie": {
+                                "es": "Likes",
+                                "en": "Likes"
+                            }
+                        }
+                    },
                     "follower_count": {
                         "cardHeader": {
                             "es": "Seguidores",
@@ -154,6 +180,54 @@
                     }
                 },
                 "publicaciones": {
+                    "cantidad": {
+                        "encabezado": {
+                            "es": "Mostrar",
+                            "en": "Show"
+                        },
+                        "inicial": {
+                            "es": "Últimas",
+                            "en": "Last"
+                        },
+                        "final": {
+                            "es": "publicaciones",
+                            "en": "posts"
+                        }
+                    },
+                    "filtros": {
+                        "titulo": {
+                            "es": "Ordenar publicaciones por",
+                            "en": "Sort post by"
+                        },
+                        "variables": [
+                            {
+                                "es": "Fecha de publicación",
+                                "en": "Post date"
+                            },
+                            {
+                                "es": "Número de likes",
+                                "en": "Like count"
+                            },
+                            {
+                                "es": "Número de comentarios",
+                                "en": "Comment count"
+                            }
+                        ]
+                    },
+                    "orden": {
+                        "titulo": {
+                            "es": "Sentido",
+                            "en": "Sorting"
+                        },
+                        "ascendente": {
+                            "es": "Menor a mayor",
+                            "en": "Lower to higher"
+                        },
+                        "descendente": {
+                            "es": "Mayor a menor",
+                            "en": "Higher to lower"
+                        }
+                    },
                     "post": {
                         "likes": {
                             "es": "Likes",

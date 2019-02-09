@@ -1,4 +1,48 @@
 <div class="clr-row">
+    <div class="clr-col-lg-6 clr-col-12">
+        <div class="card" *ngIf="medias">
+            <div class="card-header">
+                <div class="clr-row">
+                    <div class="clr-col">
+                        Likes por post
+                    </div><!-- /.clr-col -->
+                    <div class="clr-col">
+                        <clr-dropdown>
+                            <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
+                                {{ui.template.section.estadisticas.generales.like_count.inicial[idioma]}}
+                                {{limiteMedias}}
+                                {{ui.template.section.estadisticas.generales.like_count.final[idioma]}}
+                                <clr-icon shape="caret down"></clr-icon>
+                            </button>
+                            <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+                                <button type="button" clrDropdownItem
+                                        (click)="obtieneMedias(numPosts)"
+                                        *ngFor="let numPosts of [25,50,75,100]">
+                                    {{ui.template.section.estadisticas.generales.like_count.inicial[idioma]}}
+                                    {{numPosts}}
+                                    {{ui.template.section.estadisticas.generales.like_count.final[idioma]}}
+                                </button>
+                            </clr-dropdown-menu>
+                        </clr-dropdown>
+                    </div><!-- /.clr-col -->
+                </div><!-- /.clr-row -->
+            </div>
+            <div class="card-block">
+                <div class="card-text">
+                    <div style="display: block" *ngIf="dataOK.posts">
+                        <canvas baseChart
+                                [datasets]="medias.data"
+                                [labels]="medias.labels"
+                                [colors]="[colorsChart[0]]"
+                                [options]="chartOptions"
+                                [legend]="medias.leyenda"
+                                [chartType]="medias.tipo">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="clr-col-lg-6 clr-col-12" *ngFor="let metrica of metricas; index as i; first as inicial">
         <div class="card" *ngIf="dataChart[metrica]">
             <div class="card-header">
@@ -29,7 +73,7 @@
                         <canvas baseChart
                                 [datasets]="dataChart[metrica].data"
                                 [labels]="dataChart[metrica].labels"
-                                [colors]="dataChart[metrica].colors"
+                                [colors]="[colorsChart[i+1]]"
                                 [options]="chartOptions"
                                 [legend]="dataChart[metrica].leyenda"
                                 [chartType]="dataChart[metrica].tipo">

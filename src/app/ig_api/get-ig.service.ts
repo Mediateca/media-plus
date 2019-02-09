@@ -8,7 +8,7 @@ export class GetIgService {
     public hoy:number = Math.round(Date.now() / 1000);
     public dia:number = 86400;
     constructor(private http: HttpClient) { }
-    getData(tipo:string,id:string,token:string='',rango:Array<number>=[0,0],metricas:Array<string>=['']):any {
+    getData(tipo:string,id:string,token:string='',rango:Array<number>=[0,0],metricas:Array<string>=[''],limite:number=25):any {
         switch (tipo) {
             case 'media_insights':
                 return this.http.get('https://graph.facebook.com/'+id+'/insights?metric='+metricas.join()+'&access_token='+token);
@@ -17,7 +17,7 @@ export class GetIgService {
                 return this.http.get('https://graph.facebook.com/'+id+'?fields='+metricas.join()+'&access_token='+token);
                 break;
             case 'media':
-                return this.http.get('https://graph.facebook.com/'+id+'/media?access_token='+token);
+                return this.http.get('https://graph.facebook.com/'+id+'/media?fields='+metricas.join()+'&limit='+limite+'&access_token='+token);
                 break;
             case 'user_insights':
                 var until = this.hoy + (rango[0] * this.dia);
