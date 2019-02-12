@@ -1,0 +1,47 @@
+<clr-modal [(clrModalOpen)]="estado" [clrModalSize]="'lg'" [clrModalClosable]="false">
+    <h3 class="modal-title">
+        {{ui.titulo[idioma]}}
+    </h3>
+    <div class="clr-row modal-body" *ngIf="contenido">
+        <div class="clr-col-lg-6 clr-col-12 cont-media" *ngIf="estado">
+            <img [src]="contenido.media_url" *ngIf="contenido.media_type=='IMAGE'">
+            <video controls *ngIf="contenido.media_type=='VIDEO'">
+                <source [src]="contenido.media_url" type="video/mp4">
+                Su navegador no permite reproducir videos.
+            </video>
+            <app-slider [medias]="contenido.children.data" *ngIf="contenido.media_type=='CAROUSEL_ALBUM'">
+            </app-slider>
+        </div>
+        <div class="clr-col-lg-6 clr-col-12 cont-texto">
+            <table class="table table-vertical">
+                <tbody>
+                    <tr>
+                        <th>Fecha</th>
+                        <td>{{contenido.timestamp | date:'dd-MM-yyyy hh:mm a':'-0500'}}</td>
+                    </tr>
+                    <tr>
+                        <th>Likes</th>
+                        <td>{{contenido.like_count}}</td>
+                    </tr>
+                    <tr>
+                        <th>Comentarios</th>
+                        <td>{{contenido.comments_count}}</td>
+                    </tr>
+                    <tr>
+                        <th>Caption</th>
+                        <td>{{contenido.caption}}</td>
+                    </tr>
+                    <tr>
+                        <th>Comentarios</th>
+                        <td>{{contenido.comments | json}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="cierra()">
+            {{ui.cerrar[idioma]}}
+        </button>
+    </div>
+</clr-modal>

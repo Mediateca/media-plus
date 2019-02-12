@@ -1,0 +1,39 @@
+<div class="card" *ngIf="datos">
+    <div class="card-header">
+        <div class="clr-row">
+            <div class="clr-col">
+                {{cardHeader}}
+            </div><!-- /.clr-col -->
+            <div class="clr-col">
+                <clr-dropdown>
+                    <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
+                        {{filtros[filtroActual]}}
+                        <clr-icon shape="caret down"></clr-icon>
+                    </button>
+                    <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+                        <button type="button"
+                                clrDropdownItem
+                                (click)="cambiarFiltro(i)"
+                                *ngFor="let filtro of filtros; index as i">
+                            {{filtro}}
+                        </button>
+                    </clr-dropdown-menu>
+                </clr-dropdown>
+            </div><!-- /.clr-col -->
+        </div><!-- /.clr-row -->
+    </div>
+    <div class="card-block">
+        <div class="card-text">
+            <div class="grafico" style="display:block" *ngIf="datosOK">
+                <canvas baseChart
+                        [datasets]="datos.data"
+                        [labels]="datos.labels"
+                        [colors]="datos.colores"
+                        [options]="datos.opciones"
+                        [legend]="datos.leyenda"
+                        [chartType]="datos.tipo">
+                </canvas>
+            </div><!-- /.grafico -->
+        </div><!-- /.card-text -->
+    </div><!-- /.card-block -->
+</div><!-- /.card -->

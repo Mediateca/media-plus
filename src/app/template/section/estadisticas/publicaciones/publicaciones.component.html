@@ -75,7 +75,7 @@
 </div><!-- /.clr-row -->
 <div class="clr-row" *ngIf="medias">
     <div class="clr-col-4 post-container" *ngFor="let media of medias; index as i">
-        <a class="card clickable card-img post-card" (mouseover)="infoVisible[i]=true" (mouseout)="infoVisible[i]=false" (click)="modalInfo=true">
+        <a class="card clickable card-img post-card" (mouseover)="infoVisible[i]=true" (mouseout)="infoVisible[i]=false" (click)="abreModal(i)">
             <div class="post-img"
                  [ngStyle]="{'background-image': 'url('+media.media_url+')'}"
                  *ngIf="media.media_type!='VIDEO'">
@@ -105,12 +105,9 @@
         </a><!-- /.card -->
     </div><!-- /.clr-col... -->
 </div><!-- /.clr-row -->
-<clr-modal [(clrModalOpen)]="modalInfo">
-    <h3 class="modal-title">I have a nice title</h3>
-    <div class="modal-body">
-        <p>But not much to say...</p>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="modalInfo=false">Cerrar</button>
-    </div>
-</clr-modal>
+<est-modal (cerrar)="modalInfo=false"
+           [estado]="modalInfo"
+           [contenido]="medias[mediaActual]"
+           [ui]="ui.template.section.estadisticas.modal"
+           [idioma]="idioma">
+</est-modal>

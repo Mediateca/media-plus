@@ -36,17 +36,31 @@ export class PublicacionesComponent {
     sentidoOrden:number = -1;
     sentidoTipo:Array<string> = ['ascendente','descendente'];
     sentidoActual:number = 1;
-    metricas = ['timestamp','like_count','comments_count','media_url','media_type','children{media_url}','thumbnail_url'];
+    metricas = [
+        'timestamp',
+        'like_count',
+        'comments_count',
+        'media_url',
+        'media_type',
+        'children{media_url,media_type}',
+        'thumbnail_url',
+        'caption',
+        'comments'
+    ];
     medias:Array<any> = [];
     limiteMedias:number = 25;
+    mediaActual:number;
+    modalInfo:boolean = false;
     constructor(private getIg: GetIgService) {};
     obtieneDatos(limite:number){
         this.medias = [];
         this.limiteMedias = limite;
         this.getIg.getData('media',this.id,this.access_token,[0,0],this.metricas,this.limiteMedias).subscribe(datos=>{
             datos.data.forEach((data,index)=>{
-                this.infoVisible.push(false);
-                this.medias.push(data);
+                if (data.media_url) {
+                    this.infoVisible.push(false);
+                    this.medias.push(data);
+                }
             });
             this.ordenaArray(this.medias,this.metricas[this.filtroOrden],this.sentidoOrden);
         });
@@ -74,5 +88,10 @@ export class PublicacionesComponent {
             }
             return 0;
         });
+    }
+    abreModal(num:number) {
+        this.modalInfo = false;
+        this.mediaActual = num;
+        this.modalInfo = true;
     }
 }

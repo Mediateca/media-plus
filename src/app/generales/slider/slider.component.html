@@ -1,0 +1,33 @@
+<div #sliderWrap class="slider-wrap" *ngIf="medias">
+    <div class="slider-container"
+         [ngStyle]="{'width':anchoTotal+'px','transform':'translateX('+posSlider+'px)'}">
+        <div class="slider-element" *ngFor="let media of medias; index as i">
+            <img [src]="media.media_url" *ngIf="media.media_type=='IMAGE'">
+            <video controls *ngIf="media.media_type=='VIDEO'">
+                <source [src]="media.media_url" type="video/mp4">
+                Su navegador no permite reproducir videos.
+            </video>
+        </div><!-- /.slider-element -->
+    </div><!-- /.slider-container -->
+    <div class="slider-pos">
+        ({{(numSlider + 1)}}/{{medias.length}})
+    </div>
+    <a href="#"
+       class="slider-avanza"
+       (click)="avanzaSlider(1)"
+       [ngStyle]="{'height': altoSlider+'px'}"
+       [@inVisible]="avanzaVisible ? 'visible' : 'invisible'"
+       (mouseover)="avanzaVisible=true"
+       (mouseout)="avanzaVisible=false">
+        <clr-icon shape="caret right" size="32"></clr-icon>
+    </a>
+    <a href="#"
+       class="slider-atrasa"
+       (click)="avanzaSlider(-1)"
+       [ngStyle]="{'height': altoSlider+'px'}"
+       [@inVisible]="atrasaVisible ? 'visible' : 'invisible'"
+       (mouseover)="atrasaVisible=true"
+       (mouseout)="atrasaVisible=false">
+        <clr-icon shape="caret left" size="32"></clr-icon>
+    </a>
+</div><!-- /.slider-wrap -->

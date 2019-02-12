@@ -1,10 +1,18 @@
 <div class="clr-row">
+    <div class="clr-col-12">
+        <app-card-chart [datos]="datosCombinado"
+                        [cardHeader]="ui.template.section.estadisticas.generales.combinado.cardHeader[idioma]"
+                        [filtros]="filtrosCombinado"
+                        [datosOK]="dataOK.combinado"
+                        (cambiaFiltro)="generaCombinado($event)">
+        </app-card-chart>
+    </div>
     <div class="clr-col-lg-6 clr-col-12">
         <div class="card" *ngIf="medias">
             <div class="card-header">
                 <div class="clr-row">
                     <div class="clr-col">
-                        Likes por post
+                        {{ui.template.section.estadisticas.generales.like_count.cardHeader[idioma]}}
                     </div><!-- /.clr-col -->
                     <div class="clr-col">
                         <clr-dropdown>

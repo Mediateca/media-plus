@@ -20,6 +20,7 @@ export class GeneralesComponent {
                 this.dataOK[metrica] = false;
             });
             this.obtieneMedias(this.limiteMedias);
+            this.generaCombinado(this.rangoCombinado);
         }
     }
     dataOK:any = {};
@@ -42,7 +43,57 @@ export class GeneralesComponent {
         {backgroundColor: 'rgba(153,153,153,0.2)',borderColor: 'rgba(153,153,153,1)'}
     ];
     textoDropdown:any = {};
+    rangosCombinado:Array<number> = [7,14,21,28];
+    rangoCombinado:number = 0;
+    filtrosCombinado:Array<string> = ['Última semana','Últimas dos semanas','Últimas tres semanas','Últimas cuatro semanas'];
+    datosCombinado:any;
     constructor(private getIg:GetIgService) {};
+    generaCombinado(limite:number){
+        console.log('genera combinado',limite);
+        this.rangoCombinado = limite;
+        this.dataOK.combinado = false;
+        this.datosCombinado = {
+            'data': [],
+            'labels': [],
+            'leyenda': true,
+            'tipo': 'line',
+            'colores': this.chartOptions,
+            'opciones': this.colorsChart
+        };
+        this.getIg.getData('user_insights',this.id,this.access_token,[0,-this.rangosCombinado[this.rangoCombinado]],this.metricas).subscribe(datos=>{
+            for (let pack of datos.data) {
+                var data:Array<number> = [];
+                var labels:Array<string> = [];
+                for (let valor of pack.values) {
+                    data.push(valor.value);
+                    labels.push(formatDate(valor.end_time, 'dd-MM-yyyy','en-US','-0500'));
+                }
+                this.datosCombinado.data.push({
+                    'data':data,
+                    'label':this.ui.template.section.estadisticas.generales[pack.name].grafico.serie[this.idioma]
+                });
+                if(this.datosCombinado.labels.length < 1) {this.datosCombinado.labels = labels}
+            }
+            this.dataOK.combinado = true;
+        });
+        /*
+        var array:Array<any> = [];
+        this.getIg.getData('media', this.id, this.access_token,[0,0], ['timestamp','like_count'], this.rangosCombinado[this.rangoCombinado]).subscribe(datos=>{
+            datos.data.forEach((data,index)=>{
+                array.push({'like_count':data.like_count,'timestamp':data.timestamp});
+            });
+            array.sort((a,b) => {
+                if (a.timestamp > b.timestamp) {
+                    return 1;
+                }
+                if (a.timestamp < b.timestamp) {
+                    return -1;
+                }
+                return 0;
+            });
+        });
+        */
+    };
     obtieneMedias(limite:number){
         this.dataOK.posts = false;
         this.limiteMedias = limite;

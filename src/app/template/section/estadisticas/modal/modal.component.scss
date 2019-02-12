@@ -1,0 +1,11 @@
+clr-modal {
+    .modal-body {
+        .cont-media {
+            img,
+            video {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    }
+}

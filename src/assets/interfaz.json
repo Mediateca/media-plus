@@ -47,6 +47,16 @@
                 }
             },
             "estadisticas": {
+                "modal": {
+                    "titulo": {
+                        "es": "Detalle de la publicación",
+                        "en": "Post details"
+                    },
+                    "cerrar": {
+                        "es": "Cerrar",
+                        "en": "Close"
+                    }
+                },
                 "tabs": {
                     "generales": {
                         "es": "Generales",
@@ -62,7 +72,13 @@
                     }
                 },
                 "generales": {
-                    "like_count":                     {
+                    "combinado": {
+                        "cardHeader": {
+                            "es": "Gráfico combinado",
+                            "en": "Mixed chart"
+                        }
+                    },
+                    "like_count": {
                         "inicial": {
                             "es": "Últimas",
                             "en": "Last"
@@ -70,6 +86,10 @@
                         "final": {
                             "es": "publicaciones",
                             "en": "posts"
+                        },
+                        "cardHeader": {
+                            "es": "Likes por post",
+                            "en": "Likes post by post"
                         }
                     },
                     "dropdown": [

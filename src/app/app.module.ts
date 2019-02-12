@@ -16,6 +16,9 @@ import { ProfileComponent } from './template/section/profile/profile.component';
 import { EstadisticasComponent } from './template/section/estadisticas/estadisticas.component';
 import { GeneralesComponent } from './template/section/estadisticas/generales/generales.component';
 import { PublicacionesComponent } from './template/section/estadisticas/publicaciones/publicaciones.component';
+import { ModalComponent } from './template/section/estadisticas/modal/modal.component';
+import { SliderComponent } from './generales/slider/slider.component';
+import { CardChartComponent } from './generales/card-chart/card-chart.component';
 
 let config = new AuthServiceConfig([
     {
@@ -36,7 +39,10 @@ export function provideConfig() {
             ProfileComponent,
             EstadisticasComponent,
             GeneralesComponent,
-            PublicacionesComponent
+            PublicacionesComponent,
+            ModalComponent,
+            SliderComponent,
+            CardChartComponent
         ],
         imports: [
             BrowserModule,
