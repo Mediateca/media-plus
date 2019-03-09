@@ -78,6 +78,77 @@
                             "en": "Mixed chart"
                         }
                     },
+                    "capturas": {
+                        "charts": [
+                            {
+                                "titulo": {
+                                    "es": "Likes y comentarios",
+                                    "en": "Likes & comments"
+                                }
+                            },
+                            {
+                                "titulo": {
+                                    "es": "Seguidores, seguidos y publicaciones",
+                                    "en": "Followers, follows & medias"
+                                }
+                            }
+                        ],
+                        "cardHeader": {
+                            "es": "Captura de estadísticas",
+                            "en": "Data capture"
+                        },
+                        "dropdown": {
+                            "inicio": {
+                                "es": "Últimos",
+                                "en": "Last"
+                            },
+                            "final": {
+                                "es": "registros",
+                                "en": "records"
+                            },
+                            "numDatos": [100,200,500,1000]
+                        },
+                        "botonIniciar": {
+                            "textoBoton": {
+                                "es": "Iniciar captura",
+                                "en": "Start data capture"
+                            },
+                            "textoAyuda": {
+                                "es": "Nunca se ha activado la captura de datos para esta cuenta",
+                                "en": "Data capture never activated"
+                            }
+                        },
+                        "estadoCaptura": {
+                            "activo": {
+                                "es": "Captura activa",
+                                "en": "Data capture on"
+                            },
+                            "inactivo": {
+                                "es": "Captura inactiva",
+                                "en": "Data capture off"
+                            }
+                        },
+                        "likes": {
+                            "es": "Likes",
+                            "en": "Likes"
+                        },
+                        "comentarios": {
+                            "es": "Comentarios",
+                            "en": "Comments"
+                        },
+                        "seguidores": {
+                            "es": "Seguidores",
+                            "en": "Followers"
+                        },
+                        "seguidos": {
+                            "es": "Seguidos",
+                            "en": "Follows"
+                        },
+                        "medias": {
+                            "es": "Publicaciones",
+                            "en": "Medias"
+                        }
+                    },
                     "like_count": {
                         "inicial": {
                             "es": "Últimas",

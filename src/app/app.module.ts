@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from "angularx-social-login";
@@ -54,10 +54,11 @@ export function provideConfig() {
             HttpClientModule,
             ChartsModule
         ],
-        providers: [{
-            provide: AuthServiceConfig,
-            useFactory: provideConfig
-        }],
+        providers: [
+            {
+                provide: AuthServiceConfig,
+                useFactory: provideConfig
+            }],
         bootstrap: [AppComponent]
     })
 export class AppModule { }

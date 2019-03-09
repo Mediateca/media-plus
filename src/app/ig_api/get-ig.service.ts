@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class GetIgService {
     public hoy:number = Math.round(Date.now() / 1000);
     public dia:number = 86400;
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
     getData(tipo:string,id:string,token:string='',rango:Array<number>=[0,0],metricas:Array<string>=[''],limite:number=25):any {
         switch (tipo) {
             case 'media_insights':

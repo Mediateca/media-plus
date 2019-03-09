@@ -1,4 +1,92 @@
 <div class="clr-row">
+    <div class="clr-col-12 panel-capturas" *ngIf="mediaAPIregla">
+        <div class="card">
+            <div class="card-header">
+                <div class="clr-row">
+                    <div class="clr-col">
+                        {{ui.template.section.estadisticas.generales.capturas.cardHeader[idioma]}}
+                    </div><!-- /.clr-col -->
+                    <div class="clr-col" *ngIf="!mediaAPIregla.creada">
+                        <button class="btn btn-primary" (click)="creaReglaMediaAPI()">
+                            {{ui.template.section.estadisticas.generales.capturas.botonIniciar.textoBoton[idioma]}}
+                        </button>
+                        <span class="p6">
+                            {{ui.template.section.estadisticas.generales.capturas.botonIniciar.textoAyuda[idioma]}}
+                        </span>
+                    </div><!-- /.clr-col -->
+                    <div class="clr-col" *ngIf="mediaAPIregla.creada">
+                        <clr-toggle-container clrInline>
+                            <clr-toggle-wrapper>
+                                <input type="checkbox" clrToggle name="APIactiva" value="option1" [(ngModel)]="mediaAPIregla.activa" (change)="activaReglaMediaAPI()">
+                                <label *ngIf="mediaAPIregla.activa">
+                                    {{ui.template.section.estadisticas.generales.capturas.estadoCaptura.activo[idioma]}}
+                                </label>
+                                <label *ngIf="!mediaAPIregla.activa">
+                                    {{ui.template.section.estadisticas.generales.capturas.estadoCaptura.inactivo[idioma]}}
+                                </label>
+                            </clr-toggle-wrapper>
+                        </clr-toggle-container>
+                    </div><!-- /.clr-col -->
+                    <div class="clr-col" *ngIf="mediaAPIregla.creada">
+                        <clr-dropdown>
+                            <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
+                                {{ui.template.section.estadisticas.generales.capturas.dropdown.inicio[idioma]}}
+                                {{numDatosAPI}}
+                                {{ui.template.section.estadisticas.generales.capturas.dropdown.final[idioma]}}
+                                <clr-icon shape="caret down"></clr-icon>
+                            </button>
+                            <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+                                <button type="button" clrDropdownItem
+                                        (click)="obtieneAPIactivo(numDatosAPI=num)"
+                                        *ngFor="let num of ui.template.section.estadisticas.generales.capturas.dropdown.numDatos; index as i">
+                                    {{ui.template.section.estadisticas.generales.capturas.dropdown.inicio[idioma]}}
+                                    {{num}}
+                                    {{ui.template.section.estadisticas.generales.capturas.dropdown.final[idioma]}}
+                                </button>
+                            </clr-dropdown-menu>
+                        </clr-dropdown>
+                    </div><!-- /.clr-col -->
+                    <button type="button" class="btn btn-icon btn-success actualizar" (click)="obtieneAPIactivo()" *ngIf="mediaAPIregla.creada">
+                        <clr-icon shape="refresh"></clr-icon>
+                    </button>
+                </div><!-- /.clr-row -->
+            </div><!-- /.card-header -->
+            <div class="card-block" *ngIf="deltas">
+                <div class="card-title">
+                    {{ui.template.section.estadisticas.generales.capturas.charts[0].titulo[idioma]}}
+                </div>
+                <div class="card-text">
+                    <div style="display: block" *ngIf="deltas.dataSet">
+                        <canvas baseChart
+                                [datasets]="deltas.dataSet"
+                                [labels]="deltas.labels"
+                                [colors]="colorsChart"
+                                [options]="chartOptions"
+                                [legend]="deltas.leyenda"
+                                [chartType]="deltas.chartType">
+                        </canvas>
+                    </div>
+                </div><!-- /.card-text -->
+            </div><!-- /.card-block -->
+            <div class="card-block" *ngIf="acumulativos">
+                <div class="card-title">
+                    {{ui.template.section.estadisticas.generales.capturas.charts[1].titulo[idioma]}}
+                </div>
+                <div class="card-text">
+                    <div style="display: block" *ngIf="acumulativos.dataSet">
+                        <canvas baseChart
+                                [datasets]="acumulativos.dataSet"
+                                [labels]="acumulativos.labels"
+                                [colors]="colorsChart"
+                                [options]="chartOptions"
+                                [legend]="acumulativos.leyenda"
+                                [chartType]="acumulativos.chartType">
+                        </canvas>
+                    </div>
+                </div><!-- /.card-text -->
+            </div><!-- /.card-block -->
+        </div><!-- /.card -->
+    </div><!-- /.clr-col-12 -->
     <div class="clr-col-12">
         <app-card-chart [datos]="datosCombinado"
                         [cardHeader]="ui.template.section.estadisticas.generales.combinado.cardHeader[idioma]"
@@ -8,49 +96,21 @@
         </app-card-chart>
     </div>
     <div class="clr-col-lg-6 clr-col-12">
-        <div class="card" *ngIf="medias">
-            <div class="card-header">
-                <div class="clr-row">
-                    <div class="clr-col">
-                        {{ui.template.section.estadisticas.generales.like_count.cardHeader[idioma]}}
-                    </div><!-- /.clr-col -->
-                    <div class="clr-col">
-                        <clr-dropdown>
-                            <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
-                                {{ui.template.section.estadisticas.generales.like_count.inicial[idioma]}}
-                                {{limiteMedias}}
-                                {{ui.template.section.estadisticas.generales.like_count.final[idioma]}}
-                                <clr-icon shape="caret down"></clr-icon>
-                            </button>
-                            <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
-                                <button type="button" clrDropdownItem
-                                        (click)="obtieneMedias(numPosts)"
-                                        *ngFor="let numPosts of [25,50,75,100]">
-                                    {{ui.template.section.estadisticas.generales.like_count.inicial[idioma]}}
-                                    {{numPosts}}
-                                    {{ui.template.section.estadisticas.generales.like_count.final[idioma]}}
-                                </button>
-                            </clr-dropdown-menu>
-                        </clr-dropdown>
-                    </div><!-- /.clr-col -->
-                </div><!-- /.clr-row -->
-            </div>
-            <div class="card-block">
-                <div class="card-text">
-                    <div style="display: block" *ngIf="dataOK.posts">
-                        <canvas baseChart
-                                [datasets]="medias.data"
-                                [labels]="medias.labels"
-                                [colors]="[colorsChart[0]]"
-                                [options]="chartOptions"
-                                [legend]="medias.leyenda"
-                                [chartType]="medias.tipo">
-                        </canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <app-card-chart [datos]="medias"
+                        [cardHeader]="ui.template.section.estadisticas.generales.like_count.cardHeader[idioma]"
+                        [filtros]="filtrosMedias"
+                        [datosOK]="dataOK.posts"
+                        (cambiaFiltro)="obtieneMedias($event)">
+        </app-card-chart>
     </div>
+    <!--div class="clr-col-lg-6 clr-col-12" *ngFor="let metrica of metricas; index as i; first as inicial">
+<app-card-chart [datos]="dataChart[metrica]"
+[cardHeader]="ui.template.section.estadisticas.generales[metrica].cardHeader[idioma]"
+[filtros]=""
+[datosOK]="dataOK[metrica]"
+(cambiaFiltro)="obtieneDatos($event)">
+</app-card-chart>
+</div-->
     <div class="clr-col-lg-6 clr-col-12" *ngFor="let metrica of metricas; index as i; first as inicial">
         <div class="card" *ngIf="dataChart[metrica]">
             <div class="card-header">

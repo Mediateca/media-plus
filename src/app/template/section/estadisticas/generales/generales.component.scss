@@ -1,0 +1,17 @@
+.panel-capturas {
+    .card {
+        .card-header {
+            .clr-row {
+                position: relative;
+                .btn {
+                    &.actualizar {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                    }
+                }
+
+            }
+        }
+    }
+}

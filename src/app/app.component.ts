@@ -19,3 +19,5 @@ export class AppComponent {
         this.idioma = idioma;
     }
 }
+// Ojo a: 17841589552079306/top_media?fields=caption,like_count&user_id=17841404017502153
+//           TAG -|                                                       mi IG user -|
