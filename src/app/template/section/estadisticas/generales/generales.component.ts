@@ -55,7 +55,8 @@ export class GeneralesComponent {
     mediaAPIregla:any;
     deltas:any;
     acumulativos:any;
-    numDatosAPI;
+    numDatosAPI:number;
+    cargandoDataAPI:boolean;
     constructor(private getIg:GetIgService, private MediaAPI: MediaPlusApiService) {};
     generaCombinado(limite:number){
         this.filtrosCombinado = [
@@ -169,15 +170,16 @@ export class GeneralesComponent {
     }
     obtieneAPIactivo() {
         const textosVista = this.ui.template.section.estadisticas.generales.capturas;
-        this.deltas = {};
-        this.acumulativos = {};
+        this.cargandoDataAPI = true;
         this.MediaAPI.get(this.id,'?regla=estado').subscribe(datos=>{
             if (datos) {
                 this.mediaAPIregla = datos;
                 if (this.mediaAPIregla.creada) {
-                    this.MediaAPI.get(this.id,`?limit=${this.numDatosAPI}&latest=true`).subscribe(datos=>{
-                        if (datos != []) {
-                            let data:any = this.ordenaArray(datos);
+                    this.MediaAPI.get(this.id,`?limit=${this.numDatosAPI}&latest=true`).subscribe((datos:Array<any>)=>{
+                        if (datos !== []) {
+                            this.cargandoDataAPI = false;
+                            const first:Array<any> = datos.slice(0,this.numDatosAPI);
+                            const data:any = this.ordenaArray(first);
                             console.log(data.length, this.numDatosAPI);
                             this.deltas = {
                                 'dataSet': [

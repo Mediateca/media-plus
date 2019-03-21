@@ -56,7 +56,10 @@
                     {{ui.template.section.estadisticas.generales.capturas.charts[0].titulo[idioma]}}
                 </div>
                 <div class="card-text">
-                    <div style="display: block" *ngIf="deltas.dataSet">
+                    <span class="spinner" *ngIf="cargandoDataAPI">
+                        Cargando datos...
+                    </span>
+                    <div style="display: block" *ngIf="deltas.dataSet && !cargandoDataAPI">
                         <canvas baseChart
                                 [datasets]="deltas.dataSet"
                                 [labels]="deltas.labels"
@@ -73,7 +76,10 @@
                     {{ui.template.section.estadisticas.generales.capturas.charts[1].titulo[idioma]}}
                 </div>
                 <div class="card-text">
-                    <div style="display: block" *ngIf="acumulativos.dataSet">
+                    <span class="spinner" *ngIf="cargandoDataAPI">
+                        Cargando datos...
+                    </span>
+                    <div style="display: block" *ngIf="acumulativos.dataSet && !cargandoDataAPI">
                         <canvas baseChart
                                 [datasets]="acumulativos.dataSet"
                                 [labels]="acumulativos.labels"
