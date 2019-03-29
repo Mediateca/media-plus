@@ -1,0 +1,79 @@
+$ancho7: (100% / 7);
+.calendario {
+    .card {
+        .encabezado {
+            display: flex;
+            justify-content: space-between;
+            .mes-previo {
+            }
+            .mes-anno {
+                display: flex;
+                .mes, .anno {
+                    .texto {
+                        &:hover {
+                            background-color: #d9e4ea;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .anno {
+                    margin-left: 1em;
+                }
+            }
+            .mes-siguiente {
+            }
+        }
+        .card-block {
+            .card-text {
+                .mdt-col-7 {
+                    width: 100%;
+                    min-height: 1px;
+                    padding-right: .5rem;
+                    padding-left: .5rem;
+                    flex: 0 0 $ancho7;
+                    max-width: $ancho7;
+                    display: flex;
+                    flex-direction: column;
+                    cursor: pointer;
+                    &:hover {
+                        .indicadores {
+                            opacity: 1;
+                        }
+                    }
+                    .indicadores {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                        opacity: 0;
+                        .nomDia, .nomMes {
+                            font-size: 0.416666667rem;
+                        }
+                    }
+                    .numDia {
+                        display: flex;
+                        flex-grow: 1;
+                        justify-content: center;
+                        align-items: flex-end;
+                        margin-bottom: 2em;
+                        .texto {
+                            font-size: 2em;
+                        }
+                        .badge {
+                            align-self: flex-start;
+                        }
+                    }
+                    &.celdaMid {
+                        border-bottom: solid 1px #eee;
+                        border-right: solid 1px #eee;
+                    }
+                    &.dia-1, &.dia1 {
+                        color: #999;
+                    }
+                    &.hoy {
+                        background-color: #aaa;
+                    }
+                }
+            }
+        }
+    }
+}

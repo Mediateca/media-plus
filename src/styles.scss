@@ -9,5 +9,17 @@
                 }
             }
         }
+        .calendario {
+            .encabezado {
+                .mes, .anno {
+                    .clr-form-control {
+                        margin-top: inherit;
+                        display: inline;
+                        flex-direction: inherit;
+                        align-items: inherit;
+                    }
+                }
+            }
+        }
     }
 }

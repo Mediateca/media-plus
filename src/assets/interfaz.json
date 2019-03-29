@@ -330,6 +330,14 @@
                         }
                     }
                 }
+            },
+            "operaciones": {
+                "locale": {
+                    "mes": {
+                        "es": "es-CO",
+                        "en": "en-US"
+                    }
+                }
             }
         },
         "sidenav": {

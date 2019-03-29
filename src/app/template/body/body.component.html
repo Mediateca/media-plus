@@ -13,7 +13,11 @@
                           [idioma]="idioma"
                           *ngIf="seccionActual == 1">
         </app-estadisticas>
-        <div *ngIf="seccionActual == 2">Hashtags</div>
+        <app-operaciones [cuenta]="cuentas[cuentaActual].info"
+                         [ui]="ui"
+                         [idioma]="idioma"
+                         *ngIf="seccionActual == 2">
+        </app-operaciones>
     </div>
     <nav class="sidenav" [clr-nav-level]="1">
         <section class="sidenav-content">

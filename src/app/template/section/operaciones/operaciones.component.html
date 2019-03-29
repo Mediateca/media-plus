@@ -1,0 +1,72 @@
+<div class="clr-row calendario">
+    <div class="card">
+        <div class="card-header">
+            <div class="clr-col encabezado">
+                <div class="mes-previo">
+                    <button type="button" class="btn btn-icon" (click)="cambiarFecha(-1)">
+                        <clr-icon shape="caret left"></clr-icon>
+                    </button>
+                </div>
+                <div class="mes-anno">
+                    <div class="mes">
+                        <span class="texto" (click)="cambioMes=true" *ngIf="!cambioMes">
+                            {{meses[numMes]}}
+                        </span><!-- /.texto -->
+                        <select clrSelect name="numMes"
+                                [(ngModel)]="numMes"
+                                (blur)="cambioMes=false"
+                                (change)="cambiarFecha()"
+                                *ngIf="cambioMes">
+                            <option *ngFor="let mes of meses; index as i" value="{{i}}">
+                                {{mes}}
+                            </option>
+                        </select>
+                    </div><!-- /.mes -->
+                    <div class="anno">
+                        <span class="texto" (click)="cambioAnno=true" *ngIf="!cambioAnno">
+                            {{numAnno}}
+                        </span><!-- /.texto -->
+                        <select clrSelect name="numAnno"
+                                [(ngModel)]="numAnno"
+                                (blur)="cambioAnno=false"
+                                (change)="cambiarFecha()"
+                                *ngIf="cambioAnno">
+                            <option *ngFor="let anno of annos; index as i" value="{{anno}}">
+                                {{anno}}
+                            </option>
+                        </select>
+                    </div><!-- /.anno -->
+                </div>
+                <div class="mes-siguiente">
+                    <button type="button" class="btn btn-icon" (click)="cambiarFecha(1)">
+                        <clr-icon shape="caret right"></clr-icon>
+                    </button>
+                </div>
+            </div><!-- /.col -->
+        </div><!-- /.card-header -->
+        <div class="card-block">
+            <div class="card-text">
+                <div class="clr-row" #filaCalendario>
+                    <div class="mdt-col-7 celdaMid"
+                         *ngFor="let dia of diasEsteMes; index as i; first as inicial"
+                         (click)="abreDia(dia)"
+                         [ngClass]="dia.estilo"
+                         [ngStyle]="{'height': anchoCelda}">
+                        <div class="indicadores">
+                            <div class="nomDia">
+                                {{dia.nomDia}}
+                            </div>
+                            <div class="nomMes">
+                                {{dia.nomMes}}
+                            </div>
+                        </div>
+                        <div class="numDia">
+                            <span class="texto">{{dia.dia}}</span>
+                            <span class="badge badge-info">2</span>
+                        </div>
+                    </div>
+                </div><!-- /.row -->
+            </div>
+        </div><!-- /.card-block -->
+    </div><!-- /.card -->
+</div><!-- /.row -->
