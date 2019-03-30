@@ -7,6 +7,10 @@
         "cancelar": {
             "es": "Cancelar",
             "en": "Cancel"
+        },
+        "volver": {
+            "es": "Volver",
+            "en": "Back"
         }
     },
     "template": {
@@ -336,6 +340,54 @@
                     "mes": {
                         "es": "es-CO",
                         "en": "en-US"
+                    }
+                },
+                "programacion": {
+                    "titulo": {
+                        "es": "Publicaciones para el",
+                        "en": "Posts for"
+                    },
+                    "dataGrid": {
+                        "hora": {
+                            "es": "Hora",
+                            "en": "Hour"
+                        },
+                        "archivo": {
+                            "es": "Archivo",
+                            "en": "File"
+                        },
+                        "miniatura": {
+                            "es": "Miniatura",
+                            "en": "Thumbnail"
+                        },
+                        "caption": {
+                            "es": "Pie de foto",
+                            "en": "Caption"
+                        },
+                        "comentario": {
+                            "es": "Comentario",
+                            "en": "Comment"
+                        },
+                        "tags": {
+                            "es": "Etiquetas",
+                            "en": "Tags"
+                        },
+                        "acciones": {
+                            "es": "Acciones",
+                            "en": "Actions"
+                        },
+                        "crear": {
+                            "es": "Nueva publicación",
+                            "en": "New post"
+                        },
+                        "editar": {
+                            "es": "Editar",
+                            "en": "Edit"
+                        },
+                        "eliminar": {
+                            "es": "Eliminar",
+                            "en": "Delete"
+                        }
                     }
                 }
             }

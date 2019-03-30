@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-header">
+        <div class="volver">
+            <button type="button" class="btn btn-icon" (click)="volver()">
+                <clr-icon shape="caret left"></clr-icon>
+                {{ui.acciones.volver[idioma]}}
+            </button>
+        </div>
+        <div class="encabezado">
+            {{ui.template.section.operaciones.programacion.titulo[idioma]}}
+            {{dia.dateObj.toLocaleDateString(ui.template.section.operaciones.locale.mes[idioma],{day:'numeric',month:'long',year:'numeric'})}}
+        </div>
+        <div class="crear">
+            <button class="btn btn-icon btn-primary" (click)="nuevaProg()">
+                <clr-icon shape="plus"></clr-icon>
+                {{dataGrid.crear[idioma]}}
+            </button>
+        </div>
+    </div><!-- /.card-header -->
+    <div class="card-block">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{dataGrid.hora[idioma]}}</th>
+                    <th>{{dataGrid.archivo[idioma]}}</th>
+                    <th>{{dataGrid.miniatura[idioma]}}</th>
+                    <th>{{dataGrid.caption[idioma]}}</th>
+                    <th>{{dataGrid.comentario[idioma]}}</th>
+                    <th>{{dataGrid.tags[idioma]}}</th>
+                    <th>{{dataGrid.acciones[idioma]}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let prog of [{'hora':'10:00am','archivo':'producto.jpg','imagen':'producto.jpg'}]; index as i">
+                    <td>{{prog.hora}}</td>
+                    <td>{{prog.archivo}}</td>
+                    <td><img class="imagenGrid" [src]="prog.imagen"></td>
+                    <td><span class="badge badge-danger">0</span></td>
+                    <td><span class="badge badge-danger">0</span></td>
+                    <td><span class="badge badge-success">7</span></td>
+                    <td>
+                        <clr-button-group class="btn-primary">
+                            <clr-button class="btn btn-icon" (click)="editarProg(i)" title="dataGrid.editar[idioma]">
+                                <clr-icon shape="pencil"></clr-icon>
+                            </clr-button>
+                            <clr-button class="btn btn-icon btn-danger" (click)="eliminarProg(i)" title="dataGrid.eliminar[idioma]">
+                                <clr-icon shape="trash"></clr-icon>
+                            </clr-button>
+                        </clr-button-group>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div><!-- /.card-block -->
+</div><!-- /.card -->

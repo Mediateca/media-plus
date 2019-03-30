@@ -16,7 +16,7 @@ import { GetIgService } from '../../../../ig_api/get-ig.service';
             transition('invisible => visible', [
                 animate('0.4s ease-out')
             ]),
-        ]),
+        ])
     ]
 })
 export class PublicacionesComponent {

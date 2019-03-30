@@ -20,6 +20,7 @@ import { ModalComponent } from './template/section/estadisticas/modal/modal.comp
 import { SliderComponent } from './generales/slider/slider.component';
 import { CardChartComponent } from './generales/card-chart/card-chart.component';
 import { OperacionesComponent } from './template/section/operaciones/operaciones.component';
+import { ProgramacionComponent } from './template/section/operaciones/programacion/programacion.component';
 
 let config = new AuthServiceConfig([
     {
@@ -44,7 +45,8 @@ export function provideConfig() {
             ModalComponent,
             SliderComponent,
             CardChartComponent,
-            OperacionesComponent
+            OperacionesComponent,
+            ProgramacionComponent
         ],
         imports: [
             BrowserModule,

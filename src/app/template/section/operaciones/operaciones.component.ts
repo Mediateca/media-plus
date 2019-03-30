@@ -23,7 +23,8 @@ export class OperacionesComponent implements OnInit {
     numMes:number = new Date(Date.now()).getMonth();
     numAnno:number = new Date(Date.now()).getFullYear();
     diasEsteMes:Array<any>;
-    anchoCelda:string = '2em';
+    anchoCelda:string;
+    editaDia:any;
     cargaFechas() {
         let fecha = new Date();
         for (let i = 0;i < 12;i++) {
@@ -63,11 +64,17 @@ export class OperacionesComponent implements OnInit {
                 'year': dia.getFullYear(),
                 'nomDia': dia.toLocaleDateString(this.ui.template.section.operaciones.locale.mes[this.idioma],{weekday:'long'}),
                 'nomMes': dia.toLocaleDateString(this.ui.template.section.operaciones.locale.mes[this.idioma],{month:'long'}),
-                'estilo': estilo
+                'estilo': estilo,
+                'dateObj': dia
             });
         }
     }
+    abreDia(dia:any) {
+        this.editaDia = dia;
+    }
     ngOnInit() {
-        this.anchoCelda = String(this.filaCalendario.nativeElement.offsetWidth / 14)+'px';
+        setTimeout(()=>{
+            this.anchoCelda = String(this.filaCalendario.nativeElement.offsetWidth / 14) + 'px';
+        });
     }
 }

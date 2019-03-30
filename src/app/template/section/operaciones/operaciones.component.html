@@ -1,4 +1,4 @@
-<div class="clr-row calendario">
+<div class="clr-row calendario" *ngIf="!editaDia">
     <div class="card">
         <div class="card-header">
             <div class="clr-col encabezado">
@@ -70,3 +70,10 @@
         </div><!-- /.card-block -->
     </div><!-- /.card -->
 </div><!-- /.row -->
+<ope-programacion [dia]="editaDia"
+                  [ui]="ui"
+                  [idioma]="idioma"
+                  [cuenta]="cuenta"
+                  (cerrar)="editaDia=null"
+                  *ngIf="editaDia">
+</ope-programacion>
