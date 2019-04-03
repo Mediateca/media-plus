@@ -62,7 +62,7 @@
                         </div>
                         <div class="numDia">
                             <span class="texto">{{dia.dia}}</span>
-                            <span class="badge badge-info">2</span>
+                            <span class="badge badge-info" *ngIf="dia.numProg > 0">{{dia.numProg}}</span>
                         </div>
                     </div>
                 </div><!-- /.row -->

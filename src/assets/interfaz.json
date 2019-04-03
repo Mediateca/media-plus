@@ -11,6 +11,10 @@
         "volver": {
             "es": "Volver",
             "en": "Back"
+        },
+        "cerrar": {
+            "es": "Cerrar",
+            "en": "Close"
         }
     },
     "template": {

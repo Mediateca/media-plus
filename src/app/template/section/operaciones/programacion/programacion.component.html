@@ -31,13 +31,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let prog of [{'hora':'10:00am','archivo':'producto.jpg','imagen':'producto.jpg'}]; index as i">
-                    <td>{{prog.hora}}</td>
+                <tr *ngFor="let prog of dia.programaciones; index as i">
+                    <td>{{prog.timestamp | date: 'shortTime'}}</td>
                     <td>{{prog.archivo}}</td>
-                    <td><img class="imagenGrid" [src]="prog.imagen"></td>
-                    <td><span class="badge badge-danger">0</span></td>
-                    <td><span class="badge badge-danger">0</span></td>
-                    <td><span class="badge badge-success">7</span></td>
+                    <td>
+                        <img class="imagenGrid"
+                             [src]="prog.rutaURL"
+                             [id]="'img' + i"
+                             (load)="imagenCargada($event,i)"
+                             [ngStyle]="{'transform': rotaciones[imgExif[i]?.Orientation]}"
+                             [ngClass]="{'displayBlock': imgExif[i], 'displayNone': !imgExif[i]}"
+                             (click)="abreImagenModal(i)">
+                        <span class="spinner spinner-inline"
+                              [ngClass]="{'displayBlock': !imgExif[i], 'displayNone': imgExif[i]}">
+                            Cargando...
+                        </span>
+                    </td>
+                    <td><span class="badge badge-danger">{{prog.numCaption}}</span></td>
+                    <td><span class="badge badge-danger">{{prog.numComentario}}</span></td>
+                    <td><span class="badge badge-success">{{prog.etiquetas.length}}</span></td>
                     <td>
                         <clr-button-group class="btn-primary">
                             <clr-button class="btn btn-icon" (click)="editarProg(i)" title="dataGrid.editar[idioma]">
@@ -53,3 +65,19 @@
         </table>
     </div><!-- /.card-block -->
 </div><!-- /.card -->
+<clr-modal [(clrModalOpen)]="modalImagenAbierta" [clrModalSize]="'lg'" class="modal-imagen">
+    <h3 class="modal-title">{{modal.titulo}}</h3>
+    <div class="modal-body">
+        <div class="porta-imagen">
+            <img [src]="modal.url"
+                 [ngStyle]="{'transform': rotaciones[imgExif[modal.i]?.Orientation]}"
+                 class="imagen-modal"
+                 *ngIf="modal.url">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modalImagenAbierta = false">
+            {{ui.acciones.cerrar[idioma]}}
+        </button>
+    </div>
+</clr-modal>

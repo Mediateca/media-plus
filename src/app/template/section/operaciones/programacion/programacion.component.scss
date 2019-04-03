@@ -13,5 +13,25 @@
             max-width: 103px;
             cursor: pointer;
         }
+        .displayBlock {
+            display: block;
+        }
+        .displayNone {
+            display: none;
+        }
+    }
+}
+.modal-imagen {
+    .modal-body {
+        .porta-imagen {
+            padding-top: 3.5em;
+            padding-bottom: 4.5em;
+            .imagen-modal {
+                max-width: 100%;
+                max-width: 70vh;
+                width: auto;
+                height: auto;
+            }
+        }
     }
 }
